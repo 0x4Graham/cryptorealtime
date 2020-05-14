@@ -116,7 +116,7 @@ public class RunThePipeline {
                         .build();
         options.setStreaming(true);
         options.setRunner(DataflowRunner.class);
-        options.setNumWorkers(2);
+        options.setNumWorkers(1);
         options.setUsePublicIps(true);
         //options.setSubnetwork(); // configure worker location?
 
@@ -129,48 +129,35 @@ public class RunThePipeline {
         // BITFINEX
         ArrayList<CurrencyPair> bitFinexPair = new  ArrayList<CurrencyPair>();
         bitFinexPair.add(CurrencyPair.BTC_USD);
-        bitFinexPair.add(CurrencyPair.ETH_USD);
-        bitFinexPair.add(CurrencyPair.XRP_USD);
-        bitFinexPair.add(CurrencyPair.BCH_USD);
+       //bitFinexPair.add(CurrencyPair.ETH_USD);
+       //bitFinexPair.add(CurrencyPair.XRP_USD);
+       //bitFinexPair.add(CurrencyPair.BCH_USD);
         /* how to add additional custom pairs?
         bitFinexPair.add(new CurrencyPair("XTZ", "BTC"));*/
         allExchanges.add(new ExchangeConfiguration(BitfinexStreamingExchange.class.getName(),"bitfinex", bitFinexPair));
 
         // BITSTAMP
-        ArrayList<CurrencyPair> bitStampPair = new  ArrayList<CurrencyPair>();
-        bitStampPair.add(CurrencyPair.BTC_USD);
-        bitStampPair.add(CurrencyPair.ETH_USD);
-        allExchanges.add(new ExchangeConfiguration(BitstampStreamingExchange.class.getName(),"bitStamp", bitStampPair));
+        //ArrayList<CurrencyPair> bitStampPair = new  ArrayList<CurrencyPair>();
+       // bitStampPair.add(CurrencyPair.BTC_USD);
+       // bitStampPair.add(CurrencyPair.ETH_USD);
+       // allExchanges.add(new ExchangeConfiguration(BitstampStreamingExchange.class.getName(),"bitStamp", bitStampPair));
 
         // OkCOIN
-        ArrayList<CurrencyPair> okCoinPair = new  ArrayList<CurrencyPair>();
-        okCoinPair.add(CurrencyPair.BTC_USD);
-        okCoinPair.add(CurrencyPair.ETH_BTC);
-        okCoinPair.add(CurrencyPair.ETH_USD);
-        okCoinPair.add(CurrencyPair.BCH_BTC);
-        allExchanges.add(new ExchangeConfiguration(OkCoinStreamingExchange.class.getName(),"okCoin", okCoinPair));
+        //ArrayList<CurrencyPair> okCoinPair = new  ArrayList<CurrencyPair>();
+        //okCoinPair.add(CurrencyPair.BTC_USD);
+        //okCoinPair.add(CurrencyPair.ETH_BTC);
+        //okCoinPair.add(CurrencyPair.ETH_USD);
+        //okCoinPair.add(CurrencyPair.BCH_BTC);
+        //allExchanges.add(new ExchangeConfiguration(OkCoinStreamingExchange.class.getName(),"okCoin", okCoinPair));
 
         // GEMINI
         ArrayList<CurrencyPair> geminiPair = new  ArrayList<CurrencyPair>();
         geminiPair.add(CurrencyPair.BTC_USD);
-        geminiPair.add(CurrencyPair.ETH_USD);
-        geminiPair.add(CurrencyPair.BTC_EUR);
+       // geminiPair.add(CurrencyPair.ETH_USD);
+       // geminiPair.add(CurrencyPair.BTC_EUR);
         allExchanges.add(new ExchangeConfiguration(GeminiStreamingExchange.class.getName(),"gemini", geminiPair));
 
-        // POLONIEX
-        ArrayList<CurrencyPair> poloniexPair = new  ArrayList<CurrencyPair>();
-        poloniexPair.add(CurrencyPair.BTC_USDT);
-        poloniexPair.add(CurrencyPair.XRP_USDT);
-        poloniexPair.add(CurrencyPair.ETH_BTC);
-        allExchanges.add(new ExchangeConfiguration(PoloniexStreamingExchange.class.getName(),"poloniex", poloniexPair));
-
-        // HitBtc
-        ArrayList<CurrencyPair> HitBTCPair = new  ArrayList<CurrencyPair>();
-        HitBTCPair.add(CurrencyPair.BTC_USD);
-        HitBTCPair.add(CurrencyPair.ETH_USD);
-        allExchanges.add(new ExchangeConfiguration(HitbtcStreamingExchange.class.getName(),"hitBTC", HitBTCPair));
-
-        // Dispatcher
+                // Dispatcher
         // 1) iterate all exchanges
         for (ExchangeConfiguration exConf : allExchanges) {
             // 2) iterate all trading pairs and spawn jobs
